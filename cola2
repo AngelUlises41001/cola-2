@@ -1,0 +1,65 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package cola1;
+
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class Cola1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+               Scanner entrada = new Scanner(System.in);
+        int tamaño;
+        tamaño = Integer.parseInt(JOptionPane.showInputDialog("cuantos nombres desea ingresar:"));
+        String[] nombres = new String [tamaño];
+        for(int i = 0; i < tamaño ; i++){
+        System.out.print((i + 1) + " . escriba un nombre:");
+        nombres[i] = entrada.next();
+    }
+        
+        String opc;
+        int op;
+       
+        do{
+            opc = JOptionPane.showInputDialog("menu\n 1.-mostrar\n 2.-eliminar\n 3.-salir");
+            try{
+                op = Integer.parseInt(opc);
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(null,"solo numeros");
+                op = 0;
+            }
+            switch(op){
+                case 1:
+                    System.out.println("los nombres son:");
+                    for(int i = 0; i < tamaño; i++){
+                    System.out.println(nombres[i] + " ");
+                    }
+                    break;
+                    
+                case 2:
+                    if(tamaño>0){
+                    tamaño--;
+                    System.out.println("ELIMINADO");}
+                    else{
+                    System.out.println("NO ELIMINADO");}
+                    break;
+                    
+                case 3:
+                    JOptionPane.showMessageDialog(null, "salir");
+                    break;
+                    
+                default:JOptionPane.showMessageDialog(null, "operacion no valida");
+            }
+            
+        }while(op !=3);
+    }
+    
+    
+}
